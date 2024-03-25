@@ -3,41 +3,58 @@ import { Head } from '@inertiajs/vue3';
 
 defineProps({
 
-
 });
-
-
 </script>
 
 <template>
-    <Head title="example" />
-    <div class="w-full">
-        <h1 class="text-2xl text-center mt-5 font-bold mb-10">게시판</h1>
-<!--        <div class="flex justify-center align-middle">-->
-<!--            <img src="../../images/sample.png" alt="img">-->
-<!--        </div>-->
-        <div class="w-full">
-            <ul class="flex text-center align-middle border border-solid border-gray-300">
-                <li class="w-10">no</li>
-                <li class="w-10">user</li>
-                <li class="w-full">내용</li>
-                <li class="w-10">날짜</li>
-            </ul>
+    <Head title="게시판" />
+
+    <div class="max-w-screen-lg mx-auto">
+        <h1 class="text-2xl text-center mt-5 font-bold mb-6">Notice</h1>
+
+        <div class="w-full p-10 pb-0">
+            <textarea type="text" v-model="newTexts" placeholder="내용을 입력하세요" class="w-full border border-solid border-gray-300 rounded-xl h-64 resize-none outline-none"></textarea>
         </div>
 
+        <div class="flex justify-end p-10 pt-2">
+            <button @click="postText" class="border border-solid border-gray-300 rounded-3xl pt-3 pb-3 pl-5 pr-5 text-sm hover:bg-blue-900 hover:text-white transition">Posting</button>
+        </div>
 
-
+        <div v-if="arr.length > 0" class="max-w-screen-lg mx-auto p-10">
+            <div v-for="(post, index) in arr" :key="index" class="flex flex-row justify-between align-middle rounded-xl border border-solid border-gray-300 mb-4 p-4">
+                <p class=""><span>{{index + 1}}</span>{{post}}</p>
+                <div class="">
+                    <button  class="mr-1.5 border border-solid text-sm rounded-xl border-gray-300 hover:bg-blue-900 hover:text-white transition pt-0.5 pb-0.5 pl-2 pr-2">수정</button>
+                    <button @click="postDel(index)" class="border border-solid text-sm rounded-xl border-gray-300 hover:bg-red-600 hover:text-white transition pt-0.5 pb-0.5 pl-2 pr-2">X</button>
+                </div>
+            </div>
+        </div>
     </div>
 
 </template>
 
 <script>
-    export default {
-        data(){
-            return {
-                price1 : 100,
-                price2 : 200,
+export default {
+    data() {
+        return {
+            arr: [],
+            newTexts:'', //input 값
+        };
+    },
+    methods : {
+        postText(){
+            if(this.newTexts !== ''){
+                this.arr.push(this.newTexts)
+                this.newTexts = ''
+                console.log(this.arr)
             }
-        } //데이터보관함
-    }
+        },
+        postDel(index){
+            this.arr.splice(index,1)
+        },
+
+
+    },
+
+}
 </script>
