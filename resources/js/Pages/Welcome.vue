@@ -9,7 +9,20 @@ defineProps({
 <template>
     <Head title="게시판" />
 
+    <nav class="bg-blue-900 text-white">
+        <ul class="w-full flex flex-row justify-end h-10 leading-10">
+            <li><a class="mr-5" href="/">home</a></li>
+            <li><a class="mr-5" href="/login">login</a></li>
+            <li><a class="mr-10" href="/testpage">test</a></li>
+        </ul>
+    </nav>
+
     <div class="max-w-screen-lg mx-auto">
+
+
+
+
+
         <h1 class="text-2xl text-center mt-5 font-bold mb-6">Notice</h1>
 
         <div class="w-full p-10 pb-0">
