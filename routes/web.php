@@ -14,7 +14,7 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/testpage', function () {
+Route::get('/test', function () {
     return Inertia::render('TestPage');
 });
 
