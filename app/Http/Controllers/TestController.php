@@ -11,4 +11,7 @@ class TestController extends Controller
     Public function test() {
         return Inertia::render('Welcome');
     }
+    Public function test2() {
+        return Inertia::render('TestPage');
+    }
 }

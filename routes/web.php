@@ -20,10 +20,9 @@ Route::get('/', function () {
 Route::get('/',[TestController::class,'test']);
 //주소에서 App\Http\Controllers\TestController 파일의 test 메소드를 실행시킨다.
 //php artisan make:controller 컨트롤러이름
+Route::get('/test',[TestController::class,'test2']);
 
-Route::get('/test', function () {
-    return Inertia::render('TestPage');
-});
+
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
