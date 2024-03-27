@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Posting extends Model
+class Post extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'title',
-        'content',
-        'postedDate',
-
+        'title', 'content',
     ];
 
-    protected $table = 'posts';
+//    protected $casts = [
+//        'posted_date' => 'datetime',
+//        'update_time' => 'datetime',
+//    ];
 
 
 

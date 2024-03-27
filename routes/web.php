@@ -5,6 +5,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\PostController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -17,10 +18,10 @@ Route::get('/', function () {
 
 
 
-Route::get('/',[TestController::class,'test']);
+//Route::get('/',[TestController::class,'test']);
 //주소에서 App\Http\Controllers\TestController 파일의 test 메소드를 실행시킨다.
 //php artisan make:controller 컨트롤러이름
-Route::get('/test',[TestController::class,'test2']);
+//Route::get('/test',[TestController::class,'test2']);
 
 
 
@@ -36,10 +37,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-//Post Detail
-Route::post('/post/{id}',function($id){
-    return Inertia::render('PostDetail');
-});
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
+Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+
 
 
 
