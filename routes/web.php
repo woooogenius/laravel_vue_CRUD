@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\TestController;
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
@@ -13,6 +14,12 @@ Route::get('/', function () {
         'phpVersion' => PHP_VERSION,
     ]);
 });
+
+
+
+Route::get('/',[TestController::class,'test']);
+//주소에서 App\Http\Controllers\TestController 파일의 test 메소드를 실행시킨다.
+//php artisan make:controller 컨트롤러이름
 
 Route::get('/test', function () {
     return Inertia::render('TestPage');

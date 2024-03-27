@@ -1,5 +1,6 @@
 <script setup>
 import { Head } from '@inertiajs/vue3';
+import Navigation from "@/Pages/Components/Navigation.vue";
 
 defineProps({
 
@@ -9,13 +10,7 @@ defineProps({
 <template>
     <Head title="게시판" />
 
-    <nav class="bg-blue-900 text-white">
-        <ul class="w-full flex flex-row justify-end h-10 leading-10">
-            <li><a class="mr-5" href="/">home</a></li>
-            <li><a class="mr-5" href="/login">login</a></li>
-            <li><a class="mr-10" href="/test">test</a></li>
-        </ul>
-    </nav>
+    <Navigation />
 
     <div class="max-w-screen-lg mx-auto">
 
