@@ -14,15 +14,7 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title', 255);
-            $table->string('slug', 255)->unique();
-            $table->string('description', 500);
             $table->text('content');
-            $table->char('type', 1);
-            $table->char('status', 1);
-            $table->char('featured', 1);
-            $table->char('hot', 1);
-            $table->dateTime('posted_date');
-            $table->dateTime('update_time');
             $table->timestamps();
         });
     }
