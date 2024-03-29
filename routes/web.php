@@ -37,13 +37,33 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
-Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
-Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
-Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
-Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
-Route::get('/posts/{post}/detail', [PostController::class, 'detail'])->name('posts.detail');
+//////////////////////////////////////////////////////////////////////////////////////
+
+//Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+//Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+//Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+//Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
+//Route::put('/posts/{post}', [PostController::class, 'update'])->name('posts.update');
+//Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+//Route::get('/posts/{post}/detail', [PostController::class, 'detail'])->name('posts.detail');
+
+//위의 코드 리팩토링
+//반복적으로 사용중인 부분으로 묶어 표현
+
+Route::controller(PostController::class)
+    ->prefix('posts') //posts를 사용하는 그룹
+    ->name('posts.')  //name을 post. 으로 사용함
+    ->group(function(){
+        Route::get('','index')->name('index');
+        Route::get('/create','create')->name('create');
+        Route::post('','store')->name('store');
+        Route::prefix('/{post}')->group(function(){ //post/{post}를 사용하는 그룹
+            Route::get('/edit','edit')->name('edit');
+            Route::put('','update')->name('update');
+            Route::delete('','destroy')->name('destroy');
+            Route::get('/detail','detail')->name('detail');
+        });
+    });
 
 
 

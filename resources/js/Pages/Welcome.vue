@@ -36,7 +36,7 @@ function formatDate(timestamp) {
 
     <Navigation />
 
-    <p class="text-3xl text-center mt-5">Notice Home</p>
+    <p class="text-3xl text-center mt-5">Home</p>
 
     <div class="pr-3 pl-3">
     <div class="mt-5">
