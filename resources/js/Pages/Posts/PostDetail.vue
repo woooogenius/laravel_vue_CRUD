@@ -19,29 +19,40 @@
 </template>
 
 
-<script>
+<script setup>
 
 import {defineComponent} from "vue";
 import Navigation from "@/Pages/Components/Navigation.vue";
+import {useForm} from "@inertiajs/vue3";
 
-export default {
-    components: {Navigation},
-    props: {
-        post: {
-            type: Object,
-            required: true
-        }
-    },
-    data() {
-        return {
-            formData: {
-                title: this.post.title,
-                content: this.post.content
-            }
-        };
-    },
-    methods: {
+// export default {
+//     components: {Navigation},
+//     props: {
+//         post: {
+//             type: Object,
+//             required: true
+//         }
+//     },
+//     data() {
+//         return {
+//             formData: {
+//                 title: this.post.title,
+//                 content: this.post.content
+//             }
+//         };
+//     },
+//     methods: {
+//
+//     }
+// };
 
-    }
-};
+    //option API 방식에서 Composition API 방식으로 변경
+    const props = defineProps({
+        post : {type : Object, required : true}
+    })
+
+    const formData = useForm({
+        title : props.post.title,
+        content : props.post.content,
+    })
 </script>
