@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('boards',function (Blueprint $table){
             $table->id();
-            $table->string('title', 255);
-            $table->text('content');
-            $table->timestamps();
+            $table->string('name',255);
         });
 
 
+        Schema::table('posts', function (Blueprint $table) {
+            $table->foreignId('board_id')->references('id')->on('boards');
+        });
     }
 
     /**

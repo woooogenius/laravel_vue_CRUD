@@ -7,6 +7,9 @@ defineProps({
     posts: {
         type: Array,
         default: () => []
+    },
+    boards : {
+        type: Array,
     }
 })
 
@@ -29,6 +32,18 @@ function formatDate(timestamp) {
 
         router.delete(route('posts.destroy', postId) )
     }}
+
+function boardsName(boardId){
+    if(boardId === 1){
+        return '자유게시판'
+    }else if(boardId === 2){
+        return '그냥게시판'
+    }else {
+        return '그그냥게시판'
+    }
+}
+
+
 </script>
 
 <template>
@@ -42,7 +57,8 @@ function formatDate(timestamp) {
     <div class="mt-5">
         <ul class="flex flex-row border border-solid border-gray-300 text-center">
             <li class="w-1/12 border-r border-solid border-gray-300 h-10 leading-10 ">no</li>
-            <li class="w-6/12 border-r border-solid border-gray-300 h-10 leading-10 ">title</li>
+            <li class="w-4/12 border-r border-solid border-gray-300 h-10 leading-10 ">title</li>
+            <li class="w-2/12 border-r border-solid border-gray-300 h-10 leading-10 ">boards</li>
             <li class="w-3/12 border-r border-solid border-gray-300 h-10 leading-10 ">created at</li>
             <li class="w-1/12 border-r border-solid border-gray-300 h-10 leading-10 ">edit post</li>
             <li class="w-1/12  h-10 leading-10">del post</li>
@@ -54,11 +70,12 @@ function formatDate(timestamp) {
 
         <ul class="flex items-center border-t-0 border border-solid border-gray-300 text-center">
             <li class="w-1/12 border-r border-solid border-gray-300 p-1.5">{{index + 1}}</li>
-            <a :href="'/posts/' + post.id + '/detail'" class="w-6/12">
+            <a :href="'/posts/' + post.id + '/detail'" class="w-4/12">
 
-                <li class=" border-r border-solid border-gray-300 p-1.5 hover:underline">{{post.title}}</li>
+                <li class="border-r border-solid border-gray-300 p-1.5 hover:underline">{{post.title}}</li>
             </a>
 
+            <li class="w-2/12 border-r border-solid border-gray-300 p-1.5 ">{{boardsName(post.board_id)}}</li>
             <li class="w-3/12 border-r border-solid border-gray-300 p-1.5 ">{{formatDate(post.created_at)}}</li>
             <li class="w-1/12 border-r border-solid border-gray-300 p-1.5  ">
                 <a :href="'/posts/' + post.id + '/edit'" class="text-xs pt-1 pb-1 pl-2 pr-2 border border-gray-300 text-gray-500 rounded-xl hover:bg-blue-900 hover:text-white transition">Edit</a>

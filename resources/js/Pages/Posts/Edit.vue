@@ -20,7 +20,7 @@
 
 <script setup>
 import Navigation from "@/Pages/Components/Navigation.vue";
-import {useForm, usePage} from "@inertiajs/vue3";
+import {useForm} from "@inertiajs/vue3";
 
 // export default {
 //     components: {Navigation},
@@ -60,11 +60,7 @@ import {useForm, usePage} from "@inertiajs/vue3";
         await formData.put(`/posts/${props.post.id}`);
     };
 
-    // handleSubmit() {
-    //             // 수정된 게시글 데이터를 서버에 제출하는 로직
-    //             props.$inertia.put(`/posts/${props.post.id}`, props.formData);
-    //         }
-    // $inertia 객체를 사용할수 없다고 에러뜸
+
 
 
 

@@ -15,6 +15,7 @@
                 <a :href="'/posts/' + post.id + '/edit'" type="submit" class="w-1/2 border-gray-300 border mt-5 p-2 rounded-xl bg-blue-900 text-white transition hover:bg-white hover:text-black hover:shadow-xl">수정하기</a>
             </div>
         </form>
+
     </div>
 </template>
 
@@ -55,4 +56,8 @@ import {useForm} from "@inertiajs/vue3";
         title : props.post.title,
         content : props.post.content,
     })
+
+
+
+
 </script>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Board;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -16,7 +17,11 @@ class PostController extends Controller
 
     public function create()
     {
-        return Inertia::render('Posts/Create');
+        $boards = Board::all();
+
+        return Inertia::render('Posts/Create', [
+            'boards' => $boards
+        ]);
     }
 
     public function store(Request $request)
@@ -24,6 +29,7 @@ class PostController extends Controller
         $request->validate([
             'title' => 'required',
             'content' => 'required',
+            'board_id'=> 'required',
         ]);
 
         Post::create($request->all());

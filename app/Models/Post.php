@@ -10,8 +10,17 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'content',
+        'title', 'content', 'board_id'
     ];
+
+    protected $table = 'posts';
+
+    protected $primaryKey = 'id';
+
+    public function board()
+    {
+        return $this->belongsTo(Board::class);
+    }
 
 //    protected $casts = [
 //        'posted_date' => 'datetime',
