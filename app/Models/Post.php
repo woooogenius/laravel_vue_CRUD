@@ -10,7 +10,7 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'content', 'board_id'
+        'title', 'content', 'board_id', 'user_id'
     ];
 
     protected $table = 'posts';
@@ -20,6 +20,11 @@ class Post extends Model
     public function board()
     {
         return $this->belongsTo(Board::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
 //    protected $casts = [

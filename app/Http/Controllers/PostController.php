@@ -11,7 +11,8 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::with('user')->get(); //연관관계 설정된 해당 user_id의 정보를 가져옴
+
         return Inertia::render('Welcome', ['posts' => $posts]);
     }
 
@@ -30,6 +31,7 @@ class PostController extends Controller
             'title' => 'required',
             'content' => 'required',
             'board_id'=> 'required',
+            'user_id' => 'required',
         ]);
 
         Post::create($request->all());
