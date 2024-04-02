@@ -15,7 +15,7 @@ import Welcome from '@/Components/Welcome.vue';
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <div class="w-1/12 m-auto bg-white overflow-hidden shadow-xl sm:rounded-lg">
                     <div class="w-full text-center ">
-                        <a href="/posts" class="w-full block  pt-3 pb-3">Home</a>
+                        <a href="/post" class="w-full block  pt-3 pb-3">Home</a>
                     </div>
                 </div>
             </div>
