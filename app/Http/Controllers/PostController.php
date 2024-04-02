@@ -36,7 +36,7 @@ class PostController extends Controller
 
         Post::create($request->all());
 
-        return redirect()->route('posts.index')
+        return redirect()->route('post.index')
             ->with('success', 'Post created successfully.');
     }
 
@@ -45,8 +45,12 @@ class PostController extends Controller
         return Inertia::render('Posts/Edit', ['post' => $post]);
     }
 
-    public function detail(Post $post)
+    public function detail($id)
     {
+        $post = Post::with('comments.user')->where('id', $id)->first();
+
+//        $post = Post::find($id);
+
         return Inertia::render('Posts/PostDetail', ['post' => $post]);
     }
 
@@ -65,7 +69,7 @@ class PostController extends Controller
         //이는 Mass Assignment를 사용하여 간편하게 모델의 속성을 업데이트하는 방법입니다.
         $post->update($request->all());
 
-        return redirect()->route('posts.index')
+        return redirect()->route('post.index')
             ->with('success', 'Post updated successfully');
     }
 
@@ -74,7 +78,7 @@ class PostController extends Controller
 
         $post = Post::query()->findOrFail($postId); //주어진 ID에 해당하는 게시물을 검색하고, 해당하는 게시물이 없는 경우 ModelNotFoundException을 발생시킵니다.
         $post->delete(); //조회된 게시물이 있다면, delete() 메소드를 호출하여 해당 게시물을 데이터베이스에서 삭제합니다.
-        return redirect()->route('posts.index');
+        return redirect()->route('post.index');
 
 
     }

@@ -67,7 +67,7 @@ function onChangeOpt(e){
     e.target.value()
 }
 const submitForm = () => {
-    form.post(route('posts.store'), {
+    form.post(route('post.store'), {
         onSuccess: () => {
             form.reset()
         },
